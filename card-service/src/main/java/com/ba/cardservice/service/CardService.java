@@ -15,8 +15,8 @@ public class CardService{
     @Autowired
     private CardRepository cardRepo;
 
-    public Card issueCard(CardService card){
-        card.setExpiryDate(0);
+    public Card issueCard(Card card){
+        card.setExpiryDate(0L);
         card.setStatus(0);
         card.setType(0);
 
@@ -32,7 +32,7 @@ public class CardService{
         return cardRepo.save(card);
     }
 
-    public card activateCard(Long id){
+    public Card activateCard(Long id){
         Card card = cardRepo.findById(id).orElseThrow(
             ()-> new RuntimeException("card not found")
         );
@@ -41,15 +41,15 @@ public class CardService{
         return cardRepo.save(card);
     }
 
-    public Optional<Card> getCardById(Long id){
-        return cardRepo.findByCardId(id);
+    public Optional<Card> getById(Long id){
+        return cardRepo.findById(id);
     }
 
-    public List<Card> getCardByCustomer(Long id){
-        return cardRepo.findByCustomerId(id);
+    public List<Card> getCardByCustomer(Long customerId){
+        return cardRepo.findByCustomerId(customerId);
     }
 
-    public List<Card> getCardByAccount(Long id){
-        return cardRepo.findByAccountId(id);
+    public List<Card> getCardByAccount(Long accountId){
+        return cardRepo.findByAccountId(accountId);
     }
 }

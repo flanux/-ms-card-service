@@ -1,7 +1,7 @@
 package com.ba.cardservice.controller;
 
-import org.springframework.beans.factory.annotaion.Autowired;
-import org.springframework.web.bind.annotaion.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import com.ba.cardservice.model.Card;
 import com.ba.cardservice.service.CardService;
@@ -17,7 +17,7 @@ public class CardController{
     private CardService cardService;
 
     @PostMapping
-    public Card issureCard(@RequestBody Card card){
+    public Card issueCard(@RequestBody Card card){
         return cardService.issueCard(card);
     }
 
@@ -33,16 +33,16 @@ public class CardController{
 
     @GetMapping("/{id}")
     public Optional<Card> getById(@PathVariable Long id){
-        return cardService.getCardById(id);
+        return cardService.getById(id);
     }
 
     @GetMapping("/customer/{customerId}")
-    public List<Card> getByCustomerId(@PathVariable Long id){
-        return cardService.getCardByCustomer(id);
+    public List<Card> getByCustomerId(@PathVariable Long customerId){
+        return cardService.getCardByCustomer(customerId);
     }
 
     @GetMapping("/account/{accountId}")
-    public List<Card> getByAccountId(@PathVariable Long id){
-        return cardService.getCardByAccountId(id);
+    public List<Card> getByAccountId(@PathVariable Long accountId){
+        return cardService.getCardByAccount(accountId);
     }
 };
